@@ -124,31 +124,35 @@ Terminal : Windows bash /deploy.sh [tag]
 Navigateur : Sélectionner le site en cliquant sur l'adresse IP
 
 Navigateur : Se rendre dans l’onglet "Site directory"
-
 Navigateur : Noter "/public" sur le champ "Running directory"
-
 Navigateur : Désactiver le "XSS attack"
 
+Navigateur : Se rendre dans l’onglet "URL Rewrite"
+Navigateur : Sélectionner le profil "laravel" ou ajouter le code suivant :
+```nginx
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+```
+Navigateur : Cliquer sur "Save"
+
 Navigateur : Se rendre dans l’onglet "SSL"
-
 Navigateur : Sélectionner "Let’s Encrypt"
-
 Navigateur : Cocher le nom de domaine
-
 Navigateur : Cliquer sur le bouton "Apply"
 
 Navigateur : Se rendre dans l’onglet "Composer"
-
 Navigateur : Fermer la modale
 
 **Etape** 9 : Variables d'environements  
-VSCode : Modifier les variables d'environements
-
-Navigateur : Dérouler "New" et selectionner "New blank file" et le nomer ".env"
-
-Navigateur : Modifier les variables d'environements
-
-Navigateur : Fermer et enregistrer le fichier
+Navigateur : Dans "Files", ouvrir le dossier du site, créer un fichier ".env"
+Navigateur : Remplir avec les informations suivantes :
+- DB_HOST="localhost"
+- DB_PORT="3306"
+- DB_DATABASE="sql_anouar_dfs_lan"
+- DB_USERNAME="sql_anouar_dfs_lan"
+- DB_PASSWORD="[ton_password_bdd]"
+Navigateur : Enregistrer et fermer le fichier
 
 **Etape** 10 : Configurer le système de backup de la base de données  
 Navigateur : Se rendre dans l'onglet "Database" dans le menu de gauche
