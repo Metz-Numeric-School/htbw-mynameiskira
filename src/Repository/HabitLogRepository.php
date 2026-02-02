@@ -9,6 +9,7 @@ class HabitLogRepository extends AbstractRepository
 {
     public function find($id)
     {
+        // Requête préparée pour sécuriser la récupération par ID
         $sql = "SELECT * FROM habit_logs WHERE id = :id";
         $query = $this->getConnection()->prepare($sql);
         $query->execute(['id' => $id]);
@@ -24,6 +25,7 @@ class HabitLogRepository extends AbstractRepository
 
     public function findByHabit(int $habitId)
     {
+        // Requête préparée pour sécuriser le filtrage par habitude
         $sql = "SELECT * FROM habit_logs WHERE habit_id = :habit_id ORDER BY log_date DESC";
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->execute(['habit_id' => $habitId]);

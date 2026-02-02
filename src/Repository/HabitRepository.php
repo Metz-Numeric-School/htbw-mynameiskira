@@ -23,6 +23,7 @@ class HabitRepository extends AbstractRepository
 
     public function findByUser(int $userId)
     {
+        // Requête préparée pour sécuriser le filtrage par ID utilisateur
         $sql = "SELECT * FROM habits WHERE user_id = :user_id";
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->execute(['user_id' => $userId]);
@@ -42,6 +43,7 @@ class HabitRepository extends AbstractRepository
 
     public function insert(array $data = array())
     {
+        // Insertion sécurisée via requête préparée pour éviter les injections via le nom ou la description
         $sql = "INSERT INTO habits (user_id, name, description, created_at) VALUES (:user_id, :name, :description, NOW())";
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->execute([

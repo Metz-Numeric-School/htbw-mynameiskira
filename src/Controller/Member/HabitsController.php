@@ -52,6 +52,7 @@ class HabitsController extends AbstractController
                     'description' => $habit['description'] ?? null
                 ]);
 
+                // Correction : Redirection vers la bonne route /habits au lieu de /habit
                 header('Location: /habits');
                 exit;
             }

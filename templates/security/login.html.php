@@ -8,6 +8,7 @@
 
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger" role="alert">
+                    <?php // Échappement HTML pour prévenir les failles XSS ?>
                     <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>

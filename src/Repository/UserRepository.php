@@ -15,6 +15,7 @@ class UserRepository extends AbstractRepository
 
     public function find(int $id)
     {
+        // Utilisation d'une requête préparée pour éviter les injections SQL
         $sql = "SELECT * FROM mns_user WHERE id = :id";
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->execute(['id' => $id]);
@@ -23,6 +24,7 @@ class UserRepository extends AbstractRepository
 
     public function findByEmail(string $email)
     {
+        // Utilisation d'une requête préparée pour éviter les injections SQL
         $sql = "SELECT * FROM mns_user WHERE email = :email";
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->execute(['email' => $email]);
@@ -31,11 +33,12 @@ class UserRepository extends AbstractRepository
 
     public function insert(array $data = array())
     {
-        // Hash the password before storing
+        // Hachage sécurisé du mot de passe avant stockage en base de données
         if (isset($data['password'])) {
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         }
 
+        // Requête préparée pour l'insertion sécurisée des données
         $sql = "INSERT INTO mns_user (lastname, firstname, email, password, isadmin) VALUES (:lastname, :firstname, :email, :password, :isadmin)";
         $query = $this->getConnection()->prepare($sql);
         $query->execute($data);

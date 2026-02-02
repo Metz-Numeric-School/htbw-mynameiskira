@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
             $user = $this->userRepository->findByEmail($username);
 
             if ($user) {
-                // On vérifie le mot de passe avec password_verify
+                // Vérification sécurisée du mot de passe haché
                 if (password_verify($password, $user->getPassword())) {
 
                     $_SESSION['user'] = [
@@ -40,10 +40,10 @@ class SecurityController extends AbstractController
                     if ($user->getIsadmin()) {
                         header('Location: /admin/dashboard');
                         $_SESSION['admin'] = $user->getIsAdmin();
-                        exit;
+                        exit; // Arrêt du script après redirection
                     } else {
                         header('Location: /dashboard');
-                        exit;
+                        exit; // Arrêt du script après redirection
                     }
                 } else {
                     $error = 'Invalid username or password';

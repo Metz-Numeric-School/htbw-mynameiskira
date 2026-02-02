@@ -8,6 +8,7 @@
 
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger" role="alert">
+                    <?php // Protection contre les injections de scripts (XSS) via le message d'erreur ?>
                     <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>

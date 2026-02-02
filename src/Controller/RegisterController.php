@@ -18,6 +18,7 @@ class RegisterController extends AbstractController
     {
         $errors = [];
 
+        // Correction : Traitement des données via $_POST au lieu de $_GET
         if (!empty($_POST['user'])) {
 
             $user = $_POST['user'];
