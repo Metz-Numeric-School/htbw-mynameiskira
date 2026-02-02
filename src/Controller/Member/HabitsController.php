@@ -52,7 +52,7 @@ class HabitsController extends AbstractController
                     'description' => $habit['description'] ?? null
                 ]);
 
-                header('Location: /habit');
+                header('Location: /habits');
                 exit;
             }
         }
@@ -69,7 +69,7 @@ class HabitsController extends AbstractController
     {
 
         if (!empty($_POST['habit_id'])) {
-            $habitId = (int)$_POST['habit_id'];
+            $habitId = (int) $_POST['habit_id'];
             $this->habitLogRepository->toggleToday($habitId);
         }
 

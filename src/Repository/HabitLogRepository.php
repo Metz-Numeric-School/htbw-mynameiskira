@@ -24,9 +24,10 @@ class HabitLogRepository extends AbstractRepository
 
     public function findByHabit(int $habitId)
     {
-        $sql = "SELECT * FROM habit_logs WHERE habit_id = $habitId ORDER BY log_date DESC";
-        $query = $this->getConnection()->query($sql);
-        return EntityMapper::mapCollection(HabitLog::class, $query->fetchAll());
+        $sql = "SELECT * FROM habit_logs WHERE habit_id = :habit_id ORDER BY log_date DESC";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute(['habit_id' => $habitId]);
+        return EntityMapper::mapCollection(HabitLog::class, $stmt->fetchAll());
     }
 
     public function insert(array $data = array())
@@ -55,7 +56,7 @@ class HabitLogRepository extends AbstractRepository
         $stmt->execute(['user_id' => $userId]);
         $row = $stmt->fetch();
 
-        return (int)($row['total'] ?? 0);
+        return (int) ($row['total'] ?? 0);
     }
 
     /**
@@ -108,7 +109,7 @@ class HabitLogRepository extends AbstractRepository
         }
     }
 
-    
+
     public function countCompletedLastDays(int $habitId, int $days = 7): int
     {
         $sql = "
@@ -125,7 +126,7 @@ class HabitLogRepository extends AbstractRepository
         $stmt->execute();
 
         $row = $stmt->fetch();
-        return (int)($row['completed_days'] ?? 0);
+        return (int) ($row['completed_days'] ?? 0);
     }
 
     public function countAllCompletedToday(): int
@@ -133,6 +134,6 @@ class HabitLogRepository extends AbstractRepository
         $sql = "SELECT COUNT(*) as total FROM habit_logs WHERE status = 1 AND log_date = CURDATE()";
         $stmt = $this->getConnection()->query($sql);
         $row = $stmt->fetch();
-        return (int)($row['total'] ?? 0);
+        return (int) ($row['total'] ?? 0);
     }
 }

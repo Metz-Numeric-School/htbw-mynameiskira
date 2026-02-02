@@ -15,19 +15,27 @@ class UserRepository extends AbstractRepository
 
     public function find(int $id)
     {
-        $user = $this->getConnection()->query("SELECT * FROM mns_user WHERE id = $id");
-        return EntityMapper::map(User::class, $user);
+        $sql = "SELECT * FROM mns_user WHERE id = :id";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        return EntityMapper::map(User::class, $stmt->fetch());
     }
 
     public function findByEmail(string $email)
     {
-        $sql = "SELECT * FROM mns_user WHERE email = '$email'";
-        $query = $this->getConnection()->query($sql);
-        return EntityMapper::map(User::class, $query->fetch());
+        $sql = "SELECT * FROM mns_user WHERE email = :email";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        return EntityMapper::map(User::class, $stmt->fetch());
     }
 
     public function insert(array $data = array())
     {
+        // Hash the password before storing
+        if (isset($data['password'])) {
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
+
         $sql = "INSERT INTO mns_user (lastname, firstname, email, password, isadmin) VALUES (:lastname, :firstname, :email, :password, :isadmin)";
         $query = $this->getConnection()->prepare($sql);
         $query->execute($data);

@@ -1,7 +1,7 @@
 # aaPanel access 
 
-Lien d'accès :
+Lien d'accès : https://192.168.23.133:32713/6ed34a51
 
-Identifiant :
+Identifiant : jljewhht
 
-Mot de passe :
+Mot de passe : c769e82f
