@@ -4,18 +4,18 @@ Répondez ici aux questions théoriques en détaillant un maximum vos réponses 
 
 **1) Expliquer la procédure pour réserver un nom de domaine chez OVH avec des captures d'écran (arrêtez-vous au paiement) :**
 
-1 - accéder au site ovhcloud.com
-2 - survoler "domaine d'hébergement email voip"
+1 - accéder au site ovhcloud.com![menu_first.png](../public/images/menu_first.png)
+2 - survoler "domaine d'hébergement email voip"![menu_clic.png](../public/images/menu_clic.png)
 3 - cliquer sur nom de domaine
 4 - cliquer sur la barre à remplir "trouver votre nom de domaine"
-5 - écrire le nom de domaine souhaité 
+5 - écrire le nom de domaine souhaité ![domain_name_typing.png](../public/images/domain_name_typing.png)
 6 - cliquer sur rechercher
 7 - cliquer sur "acheter" sur le nom de domaine qui nous convient
-8 - une fois ajouté , cliquer sur "poursuivre la commande"
-9 - ajouter options si souhaité 
+8 - une fois ajouté , cliquer sur "poursuivre la commande"![checkout_first.png](../public/images/checkout_first.png)
+9 - ajouter options si souhaité ![options.png](../public/images/options.png)
 10 - cliquer encore une fois pour poursuivre
 11 - se connecter ou créer un compte 
-12 - cliquer sur payer 
+12 - cliquer sur payer ![payment.png](../public/images/payment.png)
 
 **2. Comment faire pour qu'un nom de domaine pointe vers une adresse IP spécifique ?**
 
