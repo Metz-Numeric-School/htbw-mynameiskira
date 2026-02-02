@@ -149,10 +149,10 @@ Navigateur : Dans "Files", ouvrir le dossier du site, créer un fichier ".env"
 Navigateur : Remplir avec les informations suivantes :
 - DB_HOST="localhost"
 - DB_PORT="3306"
-- DB_DATABASE="sql_anouar_dfs_lan"
-- DB_USERNAME="sql_anouar_dfs_lan"
-- DB_PASSWORD="[ton_password_bdd]"
-Navigateur : Enregistrer et fermer le fichier
+- DB_DATABASE="[votre_nom_de_bdd]"
+- DB_USERNAME="[votre_nom_d_utilisateur]"
+- DB_PASSWORD="[votre_mot_de_passe]"
+  Navigateur : Enregistrer et fermer le fichier
 
 **Etape** 10 : Configurer le système de backup de la base de données  
 Navigateur : Se rendre dans l'onglet "Database" dans le menu de gauche
