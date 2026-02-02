@@ -44,9 +44,11 @@ class RegisterController extends AbstractController
                 $id = $this->userRepository->insert($user);
 
                 // On authentifie l'utilsateur directement
+                // On authentifie l'utilsateur directement avec la nomenclature MySQL (firstname, lastname)
                 $_SESSION['user'] = [
                     'id' => $id,
-                    'firstname' => $user['firstname']
+                    'firstname' => $user['firstname'],
+                    'lastname' => $user['lastname']
                 ];
 
                 // On redirige vers son dashboard

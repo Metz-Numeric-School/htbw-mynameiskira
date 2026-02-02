@@ -5,7 +5,7 @@ Toutes les modifications notables apportées à ce projet seront documentées da
 ## [1.0.2] - 2026-02-02
 
 ### Correctifs de bugs
-- src/Controller/SecurityController.php & RegisterController.php : Uniformisation de la cle de session $_SESSION['user']['firstname'] pour correspondre a l'appel dans le dashboard et eviter l'erreur "Undefined array key".
+- src/Controller/ & templates/ : Uniformisation de la cle de session $_SESSION['user'] selon la nomenclature MySQL (`firstname`, `lastname`) pour resoudre l'erreur "Undefined array key" dans le dashboard et la sidebar admin. Ajout de commentaires de documentation dans le code.
 
 ## [1.0.1] - 2026-02-02
 

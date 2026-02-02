@@ -18,7 +18,16 @@ class DashboardController extends AbstractController
 
     public function index()
     {
-        $userId = $_SESSION['user']['id'];
+        $user = $_SESSION['user'] ?? null;
+        if (!$user || !isset($user['id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        // Recuperation securisee des infos utilisateur (nomenclature MySQL)
+        $userId = $user['id'];
+        $firstname = $user['firstname'] ?? 'Utilisateur';
+        $lastname = $user['lastname'] ?? '';
 
         // Statistiques rapides
         $stats = [
@@ -33,6 +42,8 @@ class DashboardController extends AbstractController
         return $this->render('member/dashboard/index.html.php', [
             'stats' => $stats,
             'habits' => $habits,
+            'firstname' => $firstname,
+            'lastname' => $lastname, // Passage du nom pour affichage potentiel
         ]);
     }
 }

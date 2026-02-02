@@ -32,9 +32,11 @@ class SecurityController extends AbstractController
                 // Vérification sécurisée du mot de passe haché
                 if (password_verify($password, $user->getPassword())) {
 
+                    // Correction : Utilisation de la nomenclature MySQL (firstname, lastname) pour la session
                     $_SESSION['user'] = [
                         'id' => $user->getId(),
                         'firstname' => $user->getFirstname(),
+                        'lastname' => $user->getLastname(),
                     ];
 
                     if ($user->getIsadmin()) {

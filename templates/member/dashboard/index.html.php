@@ -1,7 +1,8 @@
 <?php $layout = 'base.html.php'; ?>
 
 <div class="container py-5">
-    <h1 class="mb-4">Bonjour <?= $_SESSION['user']['firstname'] ?> !</h1>
+    <?php // Utilisation de la nomenclature MySQL : firstname, lastname ?>
+    <h1 class="mb-4">Bonjour <?= $firstname ?> <?= $lastname ?> !</h1>
 
     <div class="row mb-4">
         <!-- Statistiques rapides -->
@@ -62,7 +63,8 @@
                                         <div class="progress mb-2">
                                             <div class="progress-bar" role="progressbar"
                                                 style="width: <?= $habit->getProgress(7) ?>%;"
-                                                aria-valuenow="<?= $habit->getProgress(7) ?>" aria-valuemin="0" aria-valuemax="100">
+                                                aria-valuenow="<?= $habit->getProgress(7) ?>" aria-valuemin="0"
+                                                aria-valuemax="100">
                                                 <?= $habit->getProgress(7) ?>%
                                             </div>
                                         </div>
@@ -76,7 +78,8 @@
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>
-                    <p class="text-muted">Vous n’avez encore aucune habitude. <a href="/habits/create">Créez-en une maintenant</a>.</p>
+                    <p class="text-muted">Vous n’avez encore aucune habitude. <a href="/habits/create">Créez-en une
+                            maintenant</a>.</p>
                 <?php endif; ?>
             </div>
         </div>
